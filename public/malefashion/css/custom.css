@@ -1,0 +1,16 @@
+.header_login {
+    display: inline-block;
+    text-align: center;
+	padding: 26px 0 25px;
+    position: relative;
+    padding-left: 50px;
+}
+
+.navbar_auth {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+	font-family: "Nunito Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+}

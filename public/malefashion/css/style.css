@@ -378,6 +378,7 @@ ol {
 
 .header__logo a {
 	display: inline-block;
+	font-size: 18px;
 }
 
 .header__menu {
@@ -475,6 +476,12 @@ ol {
 .header__nav__option {
 	text-align: right;
 	padding: 30px 0;
+}
+
+.header__nav__option ul li{
+	list-style: none;
+	display: inline-block;
+	padding-right: 10px;
 }
 
 .header__nav__option a {
