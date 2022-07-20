@@ -16,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
-Route::get('/dashboard/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
+
+Route::group(['middleware' => ['role:super-admin|admin']], function(){
+
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
+    
+});
+
