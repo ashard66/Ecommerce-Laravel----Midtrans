@@ -25,6 +25,20 @@ class CategoryController extends Controller
             'nama' => request('nama')
         ]);
         $category->save();
-        return redirect()->route('add.category');
+        return redirect()->route('category');
+    }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        return view('dashboard.category.index', compact('category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $category->nama = $request->input('nama');
+        $category->update();
+        return redirect()->route('category');
     }
 }

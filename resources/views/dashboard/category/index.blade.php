@@ -20,6 +20,9 @@
                                     <thead>
                                         <tr>
                                             <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            No</th>
+                                            <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Nama</th>
                                             <th
@@ -32,15 +35,19 @@
                                             <tr>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">
+                                                    {{ $item->id }}
+                                                </td>
+                                                <td
+                                                    class="align-middle text-center text-secondary font-weight-bold text-xs">
                                                     {{ $item->nama }}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <a href="javascript:;" class="btn btn-link text-dark px-3 mb-0"
+                                                    <a href="{{ url('/dashboard/category/edit/'.$item->id) }}" class="btn btn-link text-dark px-3 mb-0"
                                                         data-toggle="tooltip" data-original-title="Edit user"><i
                                                             class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                         Edit
                                                     </a>
-                                                    <a href="javascript:;"
+                                                    <a href="{{ url('/dashboard/category/delete/'.$item->id) }}"
                                                         class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                         data-toggle="tooltip" data-original-title="Delete user"><i
                                                             class="far fa-trash-alt me-2"></i>

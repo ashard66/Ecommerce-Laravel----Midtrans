@@ -15,6 +15,8 @@ Route::group(['middleware' => ['role:super-admin|admin']], function(){
     Route::get('/dashboard/category', [CategoryController::class, 'category'])->name('category');
     Route::get('/dashboard/category/add', [CategoryController::class, 'add'])->name('add.category');
     Route::post('/dashboard/category/add', [CategoryController::class, 'store'])->name('store.category');
+    Route::get('/dashboard/category/edit/{id}', [CategoryController::class, 'edit'])->name('edit.category');
+    Route::put('/dashboard/category/edit/{id}', [CategoryController::class, 'update'])->name('update.category');
     
 });
 
