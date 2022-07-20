@@ -31,11 +31,16 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    {{-- <div id="preloder">
-        <div class="loader"></div>
-    </div> --}}
-
+     <!-- Offcanvas Menu Begin -->
+     <div class="offcanvas-menu-overlay"></div>
+     <div class="offcanvas-menu-wrapper">
+         <div class="offcanvas__option">
+             <div class="offcanvas__links">
+                 <a href="{{ route('login') }}">Login</a>
+             </div>
+         </div>
+         <div id="mobile-menu-wrap"></div>
+     </div>
     <!-- Header Section Begin -->
     <header class="header">
         <div class="container">
