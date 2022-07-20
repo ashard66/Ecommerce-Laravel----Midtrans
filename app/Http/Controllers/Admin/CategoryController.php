@@ -41,4 +41,11 @@ class CategoryController extends Controller
         $category->update();
         return redirect()->route('category');
     }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route('category');
+    }
 }
