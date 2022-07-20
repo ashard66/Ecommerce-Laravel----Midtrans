@@ -164,7 +164,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="admin/img/team-2.jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset('admin/img/team-2.jpg') }}" class="avatar avatar-sm me-3"
                                                             alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
@@ -194,7 +194,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="admin/img/team-3.jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset('admin/img/team-3.jpg') }}" class="avatar avatar-sm me-3"
                                                             alt="user2">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
@@ -224,7 +224,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="admin/img/team-4.jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset('admin/img/team-4.jpg') }}" class="avatar avatar-sm me-3"
                                                             alt="user3">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
@@ -254,7 +254,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="admin/img/team-3.jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset('admin/img/team-3.jpg') }}" class="avatar avatar-sm me-3"
                                                             alt="user4">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
@@ -284,7 +284,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="admin/img/team-2.jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset('admin/img/team-2.jpg') }}" class="avatar avatar-sm me-3"
                                                             alt="user5">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
@@ -314,7 +314,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="admin/img/team-4.jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset('admin/img/team-4.jpg') }}" class="avatar avatar-sm me-3"
                                                             alt="user6">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">

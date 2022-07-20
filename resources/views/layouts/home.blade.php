@@ -2,6 +2,7 @@
 <html lang="zxx">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="description" content="Male_Fashion Template">
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
