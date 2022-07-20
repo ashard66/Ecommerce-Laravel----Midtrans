@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +14,6 @@ class AdminController extends Controller
 
     public function product()
     {
-        Product::get();
         return view('dashboard.product.index');
     }
 }

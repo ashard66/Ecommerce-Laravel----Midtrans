@@ -1,17 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Auth::routes();
 
@@ -19,8 +10,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
-    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/dashboard/product', [App\Http\Controllers\AdminController::class, 'product'])->name('product');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/product', [AdminController::class, 'product'])->name('product');
+    Route::get('/dashboard/category', [CategoryController::class, 'category'])->name('category');
     
 });
 
