@@ -7,7 +7,7 @@
                 <div class="col-12">
                     <div class="card mb-4 col-md-6 mx-auto">
                         <div class="card-header pb-0">
-                            <h6>Add Product</h6>
+                            <h6>Tambah Produk</h6>
                         </div>
 
                         <div class="card-body px-0 pt-0 pb-2">
@@ -15,10 +15,10 @@
                                 <div class="card-body mx-auto">
                                     <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <label>Category</label>
+                                        <label>Kategori</label>
                                         <div class="input-group">
                                             <select class="form-select" name="id_categories" label="id_categories" id="id_categories">
-                                                <option value="">Select Category</option>
+                                                <option value="">Pilih Kategori</option>
                                                 @foreach ($category as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                                 @endforeach
@@ -49,7 +49,7 @@
                                             <input name="berat" id="berat" label="berat" type="number" class="form-control" placeholder="berat" aria-label="text">
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Add</button>
+                                            <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Tambah</button>
                                         </div>
                                     </form>
                                 </div>
@@ -57,44 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <footer class="footer pt-3  ">
-                    <div class="container-fluid">
-                        <div class="row align-items-center justify-content-lg-between">
-                            <div class="col-lg-6 mb-lg-0 mb-4">
-                                <div class="copyright text-center text-sm text-muted text-lg-start">
-                                    ©
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>,
-                                    made with <i class="fa fa-heart"></i> by
-                                    <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative
-                                        Tim</a>
-                                    for a better web.
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com" class="nav-link text-muted"
-                                            target="_blank">Creative Tim</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                            target="_blank">About Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                            target="_blank">Blog</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                            target="_blank">License</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                @include('layouts.dashboard.footer')
             </div>
     </main>
 @endsection
