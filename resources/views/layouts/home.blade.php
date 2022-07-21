@@ -55,8 +55,8 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li class="{{ Request::is('/') ? 'active':'' }}" ><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>

@@ -12,9 +12,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
     Route::get('/dashboard/product', [ProductController::class, 'product'])->name('product');
     Route::get('/dashboard/product/add', [ProductController::class, 'add'])->name('add.product');
     Route::post('/dashboard/product/add', [ProductController::class, 'store'])->name('store.product');
+    Route::get('/dashboard/product/edit/{id}', [ProductController::class, 'edit'])->name('edit.product');
+    Route::put('/dashboard/product/edit/{id}', [ProductController::class, 'update'])->name('update.product');
+    Route::get('/dashboard/product/delete/{id}', [ProductController::class, 'destroy'])->name('destroy.product');
+
     Route::get('/dashboard/category', [CategoryController::class, 'category'])->name('category');
     Route::get('/dashboard/category/add', [CategoryController::class, 'add'])->name('add.category');
     Route::post('/dashboard/category/add', [CategoryController::class, 'store'])->name('store.category');
