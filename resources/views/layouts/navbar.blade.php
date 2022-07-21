@@ -13,7 +13,7 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <li class="{{ Request::is('/') ? 'active':'' }}" ><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="">Shop</a></li>
+                        <li class="{{ Request::is('shop') ? 'active':'' }}"> <a href="{{ route('shop') }}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="./about.html">About Us</a></li>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
 
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
