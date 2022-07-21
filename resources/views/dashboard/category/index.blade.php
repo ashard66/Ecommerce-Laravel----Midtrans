@@ -20,22 +20,25 @@
                                     <thead>
                                         <tr>
                                             <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            No</th>
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                No</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Nama</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Action</th>
+                                                Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $no =1;
+                                        @endphp
                                         @foreach ($category as $item)
                                             <tr>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">
-                                                    {{ $item->id }}
+                                                    {{ $no++ }}
                                                 </td>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">
