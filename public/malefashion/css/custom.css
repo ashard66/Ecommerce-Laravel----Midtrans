@@ -14,3 +14,9 @@
     -webkit-font-smoothing: antialiased;
     font-weight: bold;
 }
+
+.card-heading-shop {
+    color: #111111;
+    font-weight: 700;
+    display: block;
+}

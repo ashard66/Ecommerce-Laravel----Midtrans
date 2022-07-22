@@ -10,6 +10,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
 Route::get('/category/{id}', [App\Http\Controllers\HomeController::class, 'viewcategory'])->name('view.category');
+Route::get('/product-detail/{id}', [App\Http\Controllers\HomeController::class, 'productdetail'])->name('product.detail');
 
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
