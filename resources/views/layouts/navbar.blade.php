@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="{{ asset('malefashion/img/logo.png') }}" alt="">
+                    <a href="{{ route('home') }}"><img src="{{ asset('malefashion/img/logo.png') }}" alt="">
                         <span class="mobile-menu font-weight-bold text-dark"> Majestic Store</span>
                     </a>
                 </div>
