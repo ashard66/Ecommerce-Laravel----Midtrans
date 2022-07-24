@@ -58,7 +58,8 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="{{ asset('malefashion/js/jquery-3.3.1.min.js') }}"></script>
+    {{-- <script src="{{ asset('malefashion/js/jquery-3.3.1.min.js') }}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('malefashion/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/jquery.nicescroll.min.js') }}"></script>
@@ -69,5 +70,5 @@
     <script src="{{ asset('malefashion/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/main.js') }}"></script>
 </body>
-
+@stack('js')
 </html>

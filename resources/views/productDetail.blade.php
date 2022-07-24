@@ -18,7 +18,7 @@
 </section>
     <!-- Shop Details Section Begin -->
 <section class="shop-details">
-    <div class="product__details__pic">
+    <div class="product__details__pic product_data">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -44,14 +44,14 @@
                         <h3>Rp. {{ number_format($product->harga) }} </h3>
                         <p>{{ $product->keterangan }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas error libero, optio natus aut dolores id harum nobis perferendis neque asperiores temporibus nam iusto sunt aperiam in ullam accusamus iure. </p>
                         <div class="product__details__cart__option">
+                            <input type="hidden" value="{{ $product->id }}" class="product_id">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input class="jumlah_product" type="text" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn"><i class="fa fa-cart-plus"></i> add to cart</a>
+                            <button type="button" class="primary-btn addCartBtn"><i class="fa fa-cart-plus"></i> add to cart</button>
                         </div>
-                        {{-- <a href="#" class="site-btn checkout-btn">Checkout</a> --}}
                     </div>
                 </div>
             </div>
@@ -109,4 +109,35 @@
 <!-- Related Section End -->
 @include('layouts.footer')
 @endsection
+@push('js')
+<script>
+    $(document).ready(function () {
+        $('.addCartBtn').click(function (e) { 
+            e.preventDefault();
+
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var jumlah_product = $(this).closest('.product_data').find('.jumlah_product').val();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: "POST",
+                url: "{{ route('add.cart') }}",
+                data: {
+                    'product_id' : product_id,
+                    'jumlah_product' : jumlah_product
+                },
+                success: function (response) {
+                    alert(response.status);
+                }
+            });
+        });
+    });
+</script>
+@endpush
+    
 
