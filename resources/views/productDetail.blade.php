@@ -25,7 +25,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__pic__item">
-                                <img src="{{ asset('file/'.$product->gambar) }}" alt="">
+                                <img class="shadow" src="{{ asset('file/'.$product->gambar) }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -42,19 +42,16 @@
                             <span> - 5 Reviews</span>
                         </div>
                         <h3>Rp. {{ number_format($product->harga) }} </h3>
-                        <p>{{ $product->keterangan }} </p>
+                        <p>{{ $product->keterangan }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas error libero, optio natus aut dolores id harum nobis perferendis neque asperiores temporibus nam iusto sunt aperiam in ullam accusamus iure. </p>
                         <div class="product__details__cart__option">
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">add to cart</a>
+                            <a href="#" class="primary-btn"><i class="fa fa-cart-plus"></i> add to cart</a>
                         </div>
-                        <div class="product__details__btns__option">
-                            <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                            <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
-                        </div>
+                        {{-- <a href="#" class="site-btn checkout-btn">Checkout</a> --}}
                     </div>
                 </div>
             </div>

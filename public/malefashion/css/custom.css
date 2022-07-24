@@ -20,3 +20,7 @@
     font-weight: 700;
     display: block;
 }
+
+.checkout-btn {
+    padding: 100px;
+}

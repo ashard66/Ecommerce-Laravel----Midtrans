@@ -77,7 +77,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="product__item">
                             <div class="product__item__pic set-bg">
-                                <a href="#">
+                                <a href="{{ route('product.detail',$item->id) }}">
                                     <img src="{{ asset('file/'.$item->gambar) }}" class="img-thumbnail" alt="Responsive image">
                                 </a>
                             </div>
