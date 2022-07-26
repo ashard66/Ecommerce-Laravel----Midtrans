@@ -77,7 +77,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6>{{ $item->nama }} - {{ $item->category->nama }}</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <a href="{{ route('product.detail',$item->id) }}" class="add-cart"><i class="fa fa-eye"></i> Lihat Detail</a>
                                 <h5>Rp.{{ number_format($item->harga) }}</h5>
                             </div>
                         </div>

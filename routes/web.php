@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function() {
 });
 Route::post('/add-to-cart', [CartController::class, 'addCart'])->name('add.cart');
 Route::post('/delete-cart', [CartController::class, 'deleteCart'])->name('delete.cart');
+Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
 
 
 Route::group(['middleware' => ['role:super-admin|admin']], function(){

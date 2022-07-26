@@ -30,11 +30,13 @@
                                     <th>Produk</th>
                                     <th>Harga</th>
                                     <th>Jumlah</th>
-                                    <th>Total</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $total = 0;
+                                @endphp
                                 @foreach ($cart as $item)
                                     <tr class="product-data">
                                         <td class="product__cart__item">
@@ -49,14 +51,16 @@
                                         <input type="hidden" value="{{ $item->product_id }}" class="product_id">
                                         <td class="quantity__item">
                                             <div class="quantity">
-                                                <div class="pro-qty-2">
-                                                    <input type="text" value="{{ $item->jumlah_product }}">
+                                                <div class="pro-qty-2 product_qty">
+                                                    <input class="qty_input" type="text" value="{{ $item->jumlah_product }}">
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="cart__price">$ 30.00</td>
                                         <td class="cart__close"><button class="btn delete-cart"><i class="fa fa-trash"></i></button></td>
                                     </tr>
+                                    @php
+                                        $total += $item->products->harga * $item->jumlah_product;
+                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -64,29 +68,22 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="#">Continue Shopping</a>
+                                <a href="{{ route('shop') }}">Continue Shopping</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
+                                <a href="{{ route('cart') }}"><i class="fa fa-spinner"></i> Update cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="cart__discount">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Coupon code">
-                            <button type="submit">Apply</button>
-                        </form>
-                    </div>
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
+                            <li>Subtotal <span>Rp. {{ number_format($total) }}</span></li>
+                            <li>Total <span>Rp. {{ number_format($total) }}</span></li>
                         </ul>
                         <a href="#" class="primary-btn">Proceed to checkout</a>
                     </div>
@@ -99,14 +96,14 @@
 @endsection
 @push('js')
     <script>
-        $('.delete-cart').click(function (e) { 
-            e.preventDefault();
-
-            $.ajaxSetup({
+        $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+        $('.delete-cart').click(function (e) { 
+            e.preventDefault();
 
             var product_id = $(this).closest('.product-data').find('.product_id').val();
             $.ajax({
@@ -118,6 +115,25 @@
                 success: function (response) {
                     window.location.reload()
                     alert(response.status)
+                }
+            });
+        });
+
+        $('.product_qty').click(function (e) { 
+            e.preventDefault();
+            var product_id = $(this).closest('.product-data').find('.product_id').val();
+            var jumlah_product = $(this).closest('.product-data').find('.qty_input').val();
+
+            data = {
+                'product_id' : product_id,
+                'jumlah_product' : jumlah_product
+            }
+            $.ajax({
+                method: "POST",
+                url: "{{ route('update.cart') }}",
+                data: data,
+                success: function (response) {
+                    
                 }
             });
         });

@@ -43,6 +43,20 @@ class CartController extends Controller
         }
     }
 
+    public function updateCart(Request $request)
+    {
+        
+        $product_id = $request->input('product_id');
+        $jumlah_product = $request->input('jumlah_product');
+        if (Auth::check()) {
+            if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
+                $cart = Cart::where('product_id', $product_id)->where('user_id', Auth::id())->first();
+                $cart->jumlah_product = $jumlah_product;
+                $cart->update();
+            }
+        }
+    }
+
     public function deleteCart(Request $request)
     {
         if (Auth::check()) {
