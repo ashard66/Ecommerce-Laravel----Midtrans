@@ -11,7 +11,8 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('cart');
+        $cart = Cart::where('user_id', Auth::id())->get();
+        return view('cart', compact('cart'));
     }
 
 
@@ -39,7 +40,21 @@ class CartController extends Controller
         }
         else {
             return response()->json(['status' => "Login to Continue"]);
-            
+        }
+    }
+
+    public function deleteCart(Request $request)
+    {
+        if (Auth::check()) {
+            $product_id = $request->input('product_id');
+            if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
+                $cart = Cart::where('product_id', $product_id)->where('user_id', Auth::id())->first();
+                $cart->delete();
+                return response()->json(['status' => "Product Deleted"]);
+            }
+        }
+        else {
+            return response()->json(['status' => "Login to Continue"]);
         }
     }
 }
