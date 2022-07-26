@@ -107,42 +107,34 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4 class="order__title">Your order</h4>
-                                <div class="checkout__order__products">Product <span>Total</span></div>
-                                @foreach ($cart as $item)
-                                    <ul class="checkout__total__products">
-                                        <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
-                                        <li>02. German chocolate <span>$ 170.0</span></li>
-                                        <li>03. Sweet autumn <span>$ 170.0</span></li>
-                                        <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
-                                    </ul>
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Product</th>
+                                            <th class="text-center">Qty</th>
+                                            <th class="text-right">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $total = 0;
+                                        @endphp
+                                        @foreach ($cart as $item)
+                                            <tr>
+                                                <td class="text-left">{{ $item->products->nama }}</td>
+                                                <td class="text-center">{{ $item->jumlah_product }}</td>
+                                                <td class="text-right">Rp.{{ number_format($item->products->harga) }}</td>
+                                            </tr>
+                                            @php
+                                                $total += $item->products->harga * $item->jumlah_product;
+                                            @endphp
+                                        @endforeach
+                                    </tbody>
+                                </table>
                                     <ul class="checkout__total__all">
-                                        <li>Subtotal <span>$750.99</span></li>
-                                        <li>Total <span>$750.99</span></li>
+                                        <li>Subtotal <span>Rp.{{ number_format($total) }}</span></li>
+                                        <li>Total <span>Rp.{{ number_format($total) }}</span></li>
                                     </ul>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="acc-or">
-                                            Create an account?
-                                            <input type="checkbox" id="acc-or">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="payment">
-                                            Check Payment
-                                            <input type="checkbox" id="payment">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="paypal">
-                                            Paypal
-                                            <input type="checkbox" id="paypal">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                @endforeach
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
                         </div>
