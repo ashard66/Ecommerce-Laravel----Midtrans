@@ -85,7 +85,7 @@
                             <li>Subtotal <span>Rp. {{ number_format($total) }}</span></li>
                             <li>Total <span>Rp. {{ number_format($total) }}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="{{ route('checkout') }}" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

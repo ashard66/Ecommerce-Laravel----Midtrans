@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\CartController;
 
 Auth::routes();
 
@@ -15,8 +16,9 @@ Route::get('/product-detail/{id}', [App\Http\Controllers\HomeController::class, 
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
-
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 });
+
 Route::post('/add-to-cart', [CartController::class, 'addCart'])->name('add.cart');
 Route::post('/delete-cart', [CartController::class, 'deleteCart'])->name('delete.cart');
 Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
