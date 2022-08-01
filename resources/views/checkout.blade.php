@@ -23,86 +23,80 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
+                <form action="#" method="POST">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
-                            <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
-                            here</a> to enter your code</h6>
                             <h6 class="checkout__title">Billing Details</h6>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                <div class="row">
+                                    <input type="hidden" value="6" class="form-control" name="province_origin">
+                                    <input type="hidden" value="40" class="form-control" id="city_origin" name="city_origin">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Fist Name<span>*</span></p>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Last Name<span>*</span></p>
+                                            <input type="text">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Phone<span>*</span></p>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Email<span>*</span></p>
+                                            <input type="text">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <label for="provinsi">Provinsi</label>
+                                        <div class="input-group">
+                                            <select name="provinsi_id" id="provinsi_id" class="form-control scroll-select">
+                                                <option value="0">Pilih Provinsi</option>
+                                                @foreach ($provinsi as $item)
+                                                    <option value="{{ $item['province_id'] }}"nama_provinsi="{{ $item['province'] }}">{{ $item['province'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="kabupaten">Kabupaten</label>
+                                        <div class="input-group">
+                                                <select name="kota_id" id="kota_id" class="form-control scroll-select">
+                                                    <option value="0">Pilih Kabupaten</option>
+                                                </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
-                                    </div>
+                                <label for="alamat">Alamat</label>
+                                <div class="checkout__input">
+                                    <input type="text" name="alamat" class="checkout__input__add">
                                 </div>
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Create an account?
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page</p>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Note about your order, e.g, special noe for delivery
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
+                                <label>Pilih Ekspedisi</label>
+                                <div class="input-group mb-3">
+                                    <select name="kurir" id="kurir" class="form-control">
+                                        <option value="">Pilih kurir</option>
+                                        <option value="jne">JNE</option>
+                                        <option value="tiki">TIKI</option>
+                                        <option value="pos">POS INDONESIA</option>
+                                    </select>
+                                </div>
+                                <label>Pilih Layanan</label>
+                                <div class="input-group">
+                                    <select name="layanan" id="layanan" class="form-control scroll-select">
+                                        <option value="">Pilih layanan</option>
+                                    </select>
+                                </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
@@ -118,6 +112,7 @@
                                     <tbody>
                                         @php
                                             $total = 0;
+                                            $totalberat = 0;
                                         @endphp
                                         @foreach ($cart as $item)
                                             <tr>
@@ -127,10 +122,19 @@
                                             </tr>
                                             @php
                                                 $total += $item->products->harga * $item->jumlah_product;
+                                                $totalberat += $item->products->berat * $item->jumlah_product;
                                             @endphp
                                         @endforeach
                                     </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Total Berat</th>
+                                            <th></th>
+                                            <th class="text-right">{{ $totalberat }} gram</th>
+                                        </tr>
+                                    </thead>
                                 </table>
+                                    <input type="hidden" name="berat" id="berat" value="{{ $totalberat }}">
                                     <ul class="checkout__total__all">
                                         <li>Subtotal <span>Rp.{{ number_format($total) }}</span></li>
                                         <li>Total <span>Rp.{{ number_format($total) }}</span></li>
@@ -144,5 +148,67 @@
         </div>
     </section>
     <!-- Checkout Section End -->
+    @include('layouts.footer')
 
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('.scroll-select').select2();
+
+            $('select[name="provinsi_id"]').on('change', function() {
+                let provinsiid = $(this).val();
+
+                if (provinsiid) {
+                    $.ajax({
+                        url: "/kota/" + provinsiid,
+                        method: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="kota_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="kota_id"]').append('<option value="' +value.city_id + '" namakota="' + value.type +' ' + value.city_name + '">' + value.type +' ' + value.city_name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('select[name="kota_id"]').empty();
+                }
+            });
+
+            $('select[name="kurir"]').on('change', function () {
+                let origin = $("input[name=city_origin]").val();
+                let destination = $("select[name=kota_id]").val();
+                let courier = $("select[name=kurir]").val();
+                let weight = $("input[name=berat]").val();
+
+                if(courier){
+                    $.ajax({
+                        url:"/origin="+origin+"&destination="+destination+"&weight="+weight+"&courier="+courier,
+                        method:"GET",
+                        dataType:"json",
+                        success:function(data){
+                            $('#layanan').empty();
+                            $.each(data, function(key, value){
+                                $.each(value.costs, function(key1, value1){
+                                    $.each(value1.cost, function(key2, value2){
+                                        $('select[name="layanan"]').append('<option value="'+ value.key +'">' + value1.service + '-' + value1.description + '-' + value2.value + '</option>');
+                                    });
+                                });
+                            });
+                        },
+                    });
+                } else {
+                    $('#layanan').empty();
+                }
+            });
+        });
+    </script>
+@endpush

@@ -17,6 +17,11 @@ Route::get('/product-detail/{id}', [App\Http\Controllers\HomeController::class, 
 Route::middleware(['auth'])->group(function() {
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.process');
+    Route::get('/provinsi', [CheckoutController::class, 'get_province'])->name('provinsi');
+    Route::get('/kota/{id}', [CheckoutController::class, 'get_city'])->name('city');
+    Route::get('/origin={city_origin}&destination={city_destination}&weight={weight}&courier={courier}', [App\Http\Controllers\CheckoutController::class, 'get_ongkir'])->name('ongkir');
+
 });
 
 Route::post('/add-to-cart', [CartController::class, 'addCart'])->name('add.cart');

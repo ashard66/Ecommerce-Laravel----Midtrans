@@ -24,10 +24,12 @@
     <link rel="stylesheet" href="{{ asset('malefashion/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/elegant-icons.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/magnific-popup.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('malefashion/css/nice-select.css') }}" type="text/css">
+    {{-- <link rel="stylesheet" href="{{ asset('malefashion/css/nice-select.css') }}" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset('malefashion/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+    integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -59,9 +61,12 @@
 
     <!-- Js Plugins -->
     {{-- <script src="{{ asset('malefashion/js/jquery-3.3.1.min.js') }}"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+    integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('malefashion/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('malefashion/js/jquery.nice-select.min.js') }}"></script>
+    {{-- <script src="{{ asset('malefashion/js/jquery.nice-select.min.js') }}"></script> --}}
     <script src="{{ asset('malefashion/js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/jquery.countdown.min.js') }}"></script>
