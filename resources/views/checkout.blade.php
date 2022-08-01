@@ -147,7 +147,7 @@
                                     <ul class="checkout__total__all">
                                         <li>Subtotal <span>Rp.{{ number_format($total) }}</span></li>
                                         <li>Ongkos Kirim <span id="ongkoskirim">Rp.0</span></li>
-                                        <li>Total <span id="total">Rp.0</span></li>
+                                        <li>Total <span id="total">Rp.{{ number_format($total) }}</span></li>
                                         <input type="hidden" name="shipping_cost" id="shipping_cost">
                                     </ul>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
