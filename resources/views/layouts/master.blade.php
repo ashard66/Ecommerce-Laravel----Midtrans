@@ -74,6 +74,6 @@
     <script src="{{ asset('malefashion/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/main.js') }}"></script>
+    @stack('js')
 </body>
-@stack('js')
 </html>

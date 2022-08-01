@@ -68,13 +68,21 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" nama="nama_provinsi" id="nama_provinsi"
+                                                placeholder="ini untuk menangkap nama provinsi ">
+                                        </div>
                                     </div>
                                     <div class="col-6">
                                         <label for="kabupaten">Kabupaten</label>
                                         <div class="input-group">
-                                                <select name="kota_id" id="kota_id" class="form-control scroll-select">
-                                                    <option value="0">Pilih Kabupaten</option>
-                                                </select>
+                                            <select name="kota_id" id="kota_id" class="form-control scroll-select">
+                                                <option value="0">Pilih Kabupaten</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" nama="nama_kota" id="nama_kota"
+                                                placeholder="ini untuk menangkap nama kota ">
                                         </div>
                                     </div>
                                 </div>
@@ -135,9 +143,12 @@
                                     </thead>
                                 </table>
                                     <input type="hidden" name="berat" id="berat" value="{{ $totalberat }}">
+                                    <input type="hidden" name="totalbelanja" id="totalbelanja" value="{{ $total }}">
                                     <ul class="checkout__total__all">
                                         <li>Subtotal <span>Rp.{{ number_format($total) }}</span></li>
-                                        <li>Total <span>Rp.{{ number_format($total) }}</span></li>
+                                        <li>Ongkos Kirim <span id="ongkoskirim">Rp.0</span></li>
+                                        <li>Total <span id="total">Rp.0</span></li>
+                                        <input type="hidden" name="shipping_cost" id="shipping_cost">
                                     </ul>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
@@ -165,6 +176,8 @@
 
             $('select[name="provinsi_id"]').on('change', function() {
                 let provinsiid = $(this).val();
+                var getnamaprovinsi = $("#provinsi_id option:selected").attr("nama_provinsi");
+                $("#nama_provinsi").val(getnamaprovinsi);
 
                 if (provinsiid) {
                     $.ajax({
@@ -176,6 +189,7 @@
                             $.each(data, function(key, value) {
                                 $('select[name="kota_id"]').append('<option value="' +value.city_id + '" namakota="' + value.type +' ' + value.city_name + '">' + value.type +' ' + value.city_name + '</option>');
                             });
+                            cekCost();
                         }
                     });
                 } else {
@@ -183,7 +197,12 @@
                 }
             });
 
-            $('select[name="kurir"]').on('change', function () {
+            $('select[name="kota_id"').on('change', function () {
+                var getnamakota = $("#kota_id option:selected").attr("namakota");
+                $("#nama_kota").val(getnamakota);
+            });
+
+            function cekCost() {
                 let origin = $("input[name=city_origin]").val();
                 let destination = $("select[name=kota_id]").val();
                 let courier = $("select[name=kurir]").val();
@@ -196,19 +215,61 @@
                         dataType:"json",
                         success:function(data){
                             $('#layanan').empty();
-                            $.each(data, function(key, value){
-                                $.each(value.costs, function(key1, value1){
-                                    $.each(value1.cost, function(key2, value2){
-                                        $('select[name="layanan"]').append('<option value="'+ value.key +'">' + value1.service + '-' + value1.description + '-' + value2.value + '</option>');
-                                    });
-                                });
+                            $.each(data[0].costs, function(key, cost) {
+                                $('select[name="layanan"]').append('<option value="' + cost.service + ' Rp.' + cost.cost[0].value + ' Estimasi ' +
+                                    cost.cost[0].etd +
+                                    '" data-ongkir="'+cost.cost[0].value+'">' + cost.service + ' Rp.' + cost.cost[0].value + ' Estimasi ' +
+                                    cost.cost[0].etd +
+                                    '</option>');
+                                if (key == 0) {
+                                    countCost(cost.cost[0].value)
+                                }
                             });
                         },
                     });
                 } else {
                     $('#layanan').empty();
                 }
+            };
+
+            $('#kota_id').on('change', function () {
+                cekCost();
             });
+
+            $('#kurir').on('change', function () {
+                cekCost();
+            });
+
+            $('select[name="layanan"').on('change', function () {
+                var ongkir = parseInt($('#layanan option:selected').data('ongkir'));
+                countCost(ongkir);
+                
+            });
+
+            function countCost(ongkir) {
+                var totalbelanja = `{{ $total }}`;
+                var total = parseInt(totalbelanja) + ongkir;
+
+                $("#ongkoskirim").text(rupiah(ongkir));
+                $('#shipping_cost').val(ongkir);
+                $("#total").text(rupiah(total));
+            }
+
+            function rupiah(angka) {
+
+                var number_string = angka.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join(',');
+                }
+
+                return 'Rp.' + rupiah;
+            }
+
         });
     </script>
 @endpush
