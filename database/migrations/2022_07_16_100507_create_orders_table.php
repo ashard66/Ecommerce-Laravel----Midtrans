@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_order');
-            $table->string('status',0)->comment('0 = Belum Bayar','1 = Sudah Bayar','2 = Sudah Dikirim','3 = Sudah Diterima','4 = Dibatalkan');
+            $table->integer('jumlah_pesanan');
             $table->integer('total_harga');
-            $table->integer('user_id');
+            $table->integer('product_id');
+            $table->integer('order_id');
             $table->timestamps();
         });
     }
