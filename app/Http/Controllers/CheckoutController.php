@@ -115,11 +115,6 @@ class CheckoutController extends Controller
         }
     }
 
-    public function checkout()
-    {
-        # code...
-    }
-
     protected function initPaymentGateway(){
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');

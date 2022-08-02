@@ -7,6 +7,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{ url('checkout') }}"><i class="fa fa-home"></i> Checkout</a>
                         <span>Transaction</span>
                     </div>
                 </div>
@@ -41,30 +42,31 @@
 @push('js')
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script>
-        const payButton = document.querySelector('#pay-button');
-        payButton.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            snap.pay('{{ $snapToken }}', {
-                // Optional
-                onSuccess: function(result) {
-                    /* You may add your own js here, this is just example */
-                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    console.log(result)
-                },
-                // Optional
-                onPending: function(result) {
-                    /* You may add your own js here, this is just example */
-                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    console.log(result)
-                },
-                // Optional
-                onError: function(result) {
-                    /* You may add your own js here, this is just example */
-                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    console.log(result)
-                }
-            });
-        });
+        
     </script>
 @endpush
+{{-- // const payButton = document.querySelector('#pay-button');
+        // payButton.addEventListener('click', function(e) {
+        //     e.preventDefault();
+
+        //     snap.pay('{{ $snap }}', {
+        //         // Optional
+        //         onSuccess: function(result) {
+        //             /* You may add your own js here, this is just example */
+        //             // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        //             console.log(result)
+        //         },
+        //         // Optional
+        //         onPending: function(result) {
+        //             /* You may add your own js here, this is just example */
+        //             // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        //             console.log(result)
+        //         },
+        //         // Optional
+        //         onError: function(result) {
+        //             /* You may add your own js here, this is just example */
+        //             // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        //             console.log(result)
+        //         }
+        //     });
+        // }); --}}

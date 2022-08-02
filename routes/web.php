@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
@@ -17,7 +18,7 @@ Route::get('/product-detail/{id}', [App\Http\Controllers\HomeController::class, 
 Route::middleware(['auth'])->group(function() {
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-    Route::get('/checkout/process', [CheckoutController::class, 'initPaymentGateway'])->name('checkout.process');
+    Route::post('/order', [OrderController::class, 'orderDetail'])->name('order');
     Route::get('/provinsi', [CheckoutController::class, 'get_province'])->name('provinsi');
     Route::get('/kota/{id}', [CheckoutController::class, 'get_city'])->name('city');
     Route::get('/origin={city_origin}&destination={city_destination}&weight={weight}&courier={courier}', [App\Http\Controllers\CheckoutController::class, 'get_ongkir'])->name('ongkir');

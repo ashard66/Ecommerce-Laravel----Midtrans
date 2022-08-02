@@ -23,39 +23,20 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="{{ route('checkout.process') }}" method="GET">
+                <form action="{{ route('order') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Billing Details</h6>
-                                <div class="row">
                                     <input type="hidden" value="6" class="form-control" name="province_origin">
                                     <input type="hidden" value="40" class="form-control" id="city_origin" name="city_origin">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Fist Name<span>*</span></p>
-                                            <input type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Last Name<span>*</span></p>
-                                            <input type="text">
-                                        </div>
-                                    </div>
+                                <div class="checkout__input">
+                                    <p>Name<span>*</span></p>
+                                    <input type="text" value="{{ Auth()->user()->name }}" name="nama">
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Phone<span>*</span></p>
-                                            <input type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Email<span>*</span></p>
-                                            <input type="text">
-                                        </div>
-                                    </div>
+                                <div class="checkout__input">
+                                    <p>Phone<span>*</span></p>
+                                    <input type="text" name="phone">
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-6">
@@ -64,7 +45,7 @@
                                             <select name="provinsi_id" id="provinsi_id" class="form-control scroll-select">
                                                 <option value="0">Pilih Provinsi</option>
                                                 @foreach ($provinsi as $item)
-                                                    <option value="{{ $item['province_id'] }}"nama_provinsi="{{ $item['province'] }}">{{ $item['province'] }}</option>
+                                                    <option value="{{ $item['province'] }}" data-id="{{ $item['province_id'] }}">{{ $item['province'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -175,26 +156,30 @@
             $('.scroll-select').select2();
 
             $('select[name="provinsi_id"]').on('change', function() {
-                let provinsiid = $(this).val();
+                // let provinsiid = $(this).data('id');
+                var provinsiid = $('#provinsi_id option:selected').data('id');
                 var getnamaprovinsi = $("#provinsi_id option:selected").attr("nama_provinsi");
                 $("#nama_provinsi").val(getnamaprovinsi);
 
-                if (provinsiid) {
+
+                
                     $.ajax({
                         url: "/kota/" + provinsiid,
                         method: "GET",
                         dataType: "json",
                         success: function(data) {
-                            $('select[name="kota_id"]').empty();
-                            $.each(data, function(key, value) {
-                                $('select[name="kota_id"]').append('<option value="' +value.city_id + '" namakota="' + value.type +' ' + value.city_name + '">' + value.type +' ' + value.city_name + '</option>');
-                            });
-                            cekCost();
+                            if (data) {
+                                $('select[name="kota_id"]').empty();
+                                $.each(data, function(key, value) {
+                                    $('select[name="kota_id"]').append('<option value="' +value.city_name + '" data-id="' + value.city_id + '">' + value.type +' ' + value.city_name + '</option>');
+                                });
+                                cekCost();
+                            } else {
+                                $('select[name="kota_id"]').empty();
+                            }
+
                         }
                     });
-                } else {
-                    $('select[name="kota_id"]').empty();
-                }
             });
 
             $('select[name="kota_id"').on('change', function () {
@@ -204,7 +189,7 @@
 
             function cekCost() {
                 let origin = $("input[name=city_origin]").val();
-                let destination = $("select[name=kota_id]").val();
+                let destination = $('#kota_id option:selected').data('id');
                 let courier = $("select[name=kurir]").val();
                 let weight = $("input[name=berat]").val();
 
