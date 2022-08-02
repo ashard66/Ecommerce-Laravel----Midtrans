@@ -23,7 +23,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#" method="POST">
+                <form action="{{ route('checkout.process') }}" method="GET">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Billing Details</h6>
