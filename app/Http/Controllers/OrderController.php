@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -28,6 +31,18 @@ class OrderController extends Controller
             'phone' => $request['phone']
         ]);
         $dataOrder->save();
+
+        $orderItem = Cart::where('user_id', Auth::id())->get();
+        foreach($orderItem as $item) {
+            Order::create([
+                'order_id' => $dataOrder->id,
+                'product_id' => $item->product_id,
+                'jumlah_pesanan' => $item->jumlah_product
+            ]);
+        }
+
+        $cartItem = Cart::where('user_id', Auth::id())->get();
+        Cart::destroy($cartItem);
         return view('transaction');
     }
 }
