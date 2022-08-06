@@ -8,10 +8,17 @@ use App\Models\OrderDetail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Services\Midtrans\CreateSnapTokenService;
 
 class OrderController extends Controller
 {
-    public $snapToken;
+    protected $invoice;
+    protected $orderDetail;
+    public function __construct(OrderDetail $orderDetail)
+    {
+        $this->orderDetail = $orderDetail;
+    }
+
     public function orderDetail(Request $request)
     {
         $subtotal = $request['totalbelanja'];
@@ -45,23 +52,21 @@ class OrderController extends Controller
         $cartItem = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartItem);
 
-        
-        return view('transaction');
+        return view('transaction', compact('dataOrder'));
     }
 
-    public function show(Order $order)
+    public function show($invoice)
     {
-        $snapToken = $order->snap_token;
+        $orderDetail = $this->orderDetail->Query()->where('invoice', $invoice)->first();
+        $snapToken = $orderDetail->snap_token;
         if (empty($snapToken)) {
             // Jika snap token masih NULL, buat token snap dan simpan ke database
- 
-            $midtrans = new CreateSnapTokenService($order);
+            $midtrans = new CreateSnapTokenService($orderDetail);
             $snapToken = $midtrans->getSnapToken();
- 
-            $order->snap_token = $snapToken;
-            $order->save();
+            $orderDetail->snap_token = $snapToken;
+            $orderDetail->save();
         }
  
-        return view('orders.show', compact('order', 'snapToken'));
+        return view('transactionShow', compact('orderDetail', 'snapToken'));
     }
 }

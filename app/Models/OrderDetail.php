@@ -24,4 +24,14 @@ class OrderDetail extends Model
       'alamat',
       'layanan',
     ];
+
+    public function User()
+    {
+        return $this->belongsTo('App\Models\User','user_id');
+    }
+
+    public function Order()
+    {
+        return $this->hasMany(Order::class,'order_id','id');
+    }
 }
