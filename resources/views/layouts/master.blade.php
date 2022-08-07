@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('malefashion/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/elegant-icons.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/magnific-popup.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('malefashion/css/nice-select.css') }}" type="text/css">
+    {{-- <link rel="stylesheet" href="{{ asset('malefashion/css/nice-select.css') }}" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset('malefashion/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('malefashion/css/style.css') }}" type="text/css">
@@ -69,7 +69,7 @@
     <script src="{{ asset('malefashion/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('malefashion/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('malefashion/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('malefashion/js/jquery.nice-select.min.js') }}"></script>
+    {{-- <script src="{{ asset('malefashion/js/jquery.nice-select.min.js') }}"></script> --}}
     <script src="{{ asset('malefashion/js/main.js') }}"></script>
     @stack('js')
 </body>

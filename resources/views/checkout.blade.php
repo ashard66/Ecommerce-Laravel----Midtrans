@@ -53,10 +53,8 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="hidden" class="form-control" nama="nama_provinsi" id="nama_provinsi"
+                                        <input type="hidden" class="form-control" nama="nama_provinsi" id="nama_provinsi"
                                                 placeholder="ini untuk menangkap nama provinsi ">
-                                        </div>
                                     </div>
                                     <div class="col-6">
                                         <label for="kabupaten">Kabupaten</label>
@@ -65,10 +63,8 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
                                                 <option value="0">Pilih Kabupaten</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="hidden" class="form-control" nama="nama_kota" id="nama_kota"
+                                        <input type="hidden" class="form-control" nama="nama_kota" id="nama_kota"
                                                 placeholder="ini untuk menangkap nama kota ">
-                                        </div>
                                     </div>
                                 </div>
                                 <label for="alamat">Alamat</label>

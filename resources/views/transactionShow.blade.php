@@ -7,8 +7,8 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
-                        <a href=""> Transaction</a>
-                        {{-- <span>{{ $data['order']->invoice_number }}</span> --}}
+                        <a href="{{ route('order') }}"> Order</a>
+                        <span>{{ $orderDetail->invoice }}</span>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="invoice" style="border-top: 2px solid #6777ef;">
-                        {{-- <div class="invoice-print">
+                        <div class="invoice-print">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="invoice-title">
@@ -31,16 +31,16 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <address>
-                                                <strong>{{ __('text.billed_to') }}:</strong><br>
-                                                {{ $orderDetail->Customer->name }}<br>
-                                                {{ $orderDetail->Customer->email }}<br>
+                                                <strong>Dibayar Oleh :</strong><br>
+                                                {{ $orderDetail->User->name }}<br>
+                                                {{ $orderDetail->User->email }}<br>
                                             </address>
                                         </div>
                                         <div class="col-md-6 text-md-right">
                                             <address>
-                                                <strong>{{ __('text.shipped_to') }}:</strong><br>
-                                                {{ $orderDetail->recipient_name }}<br>
-                                                {{ $orderDetail->address_detail }}<br>
+                                                <strong>Dikirim Ke :</strong><br>
+                                                {{ $orderDetail->name }}<br>
+                                                {{ $orderDetail->alamat }}<br>
                                                 {{ $orderDetail->destination }}
                                             </address>
                                         </div>
@@ -48,7 +48,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <address>
-                                                <strong>{{ __('text.order_status') }}:</strong>
+                                                <strong>Status Pesanan :</strong>
                                                 <div class="mt-2">
                                                     {!! $orderDetail->status_name !!}
                                                 </div>
@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="col-md-6 text-md-right">
                                             <address>
-                                                <strong>{{ __('text.order_date') }}:</strong><br>
+                                                <strong>Tanggal Order :</strong><br>
                                                 {{ $orderDetail->created_at }}<br><br>
                                             </address>
                                         </div>
@@ -66,28 +66,23 @@
 
                             <div class="row mt-4">
                                 <div class="col-md-12">
-                                    <div class="section-title font-weight-bold">{{ __('text.order_summary') }}</div>
+                                    <div class="section-title font-weight-bold text-left">Rincian Order</div>
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-md">
                                             <tbody>
                                                 <tr>
                                                     <th data-width="40" style="width: 40px;">#</th>
-                                                    <th>{{ __('field.product_name') }}</th>
-                                                    <th class="text-center">{{ __('field.price') }}</th>
-                                                    <th class="text-center">{{ __('text.quantity') }}</th>
-                                                    <th class="text-right">Total</th>
+                                                    <th>Nama</th>
+                                                    <th class="text-center">Harga</th>
+                                                    <th class="text-center">Jumlah</th>
                                                 </tr>
-                                                @foreach ($orderDetail->orderDetail()->get() as $detail)
+                                                @foreach ($orderDetail->Order()->get() as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td><a
-                                                                href="{{ route('product.show', ['categoriSlug' => $detail->Product->category->slug, 'productSlug' => $detail->Product->slug]) }}">{{ $detail->product->name }}</a>
+                                                        <td>{{ $item->Product->nama }}</td>
+                                                        <td class="text-center">{{ number_format($item->Product->harga) }}
                                                         </td>
-                                                        <td class="text-center">{{ rupiah($detail->product->price) }}
-                                                        </td>
-                                                        <td class="text-center">{{ $detail->qty }}</td>
-                                                        <td class="text-right">
-                                                            {{ rupiah($detail->total_price_per_product) }}</td>
+                                                        <td class="text-center">{{ $item->jumlah_pesanan }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -96,13 +91,13 @@
                                     <div class="row mt-4">
                                         <div class="col-lg-8">
                                             <address>
-                                                <strong>{{ __('text.shipping_method') }}:</strong>
+                                                <strong>Metode Pengiriman :</strong>
                                                 <div class="mt-2">
-                                                    <p class="section-lead text-uppercase">{{ $orderDetail->courier }}
-                                                        {{ $orderDetail->shipping_method }}</p>
+                                                    <p class="section-lead text-uppercase">{{ $orderDetail->kurir }}
+                                                        {{ $orderDetail->layanan }}</p>
                                                 </div>
                                             </address>
-                                            @if ($orderDetail->receipt_number != null)
+                                            {{-- @if ($orderDetail->receipt_number != null)
                                                 <address>
                                                     <strong>{{ __('text.receipt_number') }}:</strong>
                                                     <div class="mt-2">
@@ -110,30 +105,28 @@
                                                             {{ $orderDetail->receipt_number }}</p>
                                                     </div>
                                                 </address>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                         <div class="col-lg-4 text-right">
                                             <div class="invoice-detail-item">
-                                                <div class="invoice-detail-name">Subtotal</div>
-                                                <div class="invoice-detail-value">{{ rupiah($orderDetail->subtotal) }}
+                                                <strong>Subtotal :</strong>
+                                                <div class="invoice-detail-value">Rp.{{ number_format($orderDetail->subtotal) }}
                                                 </div>
                                             </div>
                                             <div class="invoice-detail-item">
-                                                <div class="invoice-detail-name">{{ __('text.shipping_cost') }}</div>
-                                                <div class="invoice-detail-value">
-                                                    {{ rupiah($orderDetail->shipping_cost) }}</div>
+                                                <strong>Biaya Pengiriman :</strong>
+                                                <div class="invoice-detail-value">Rp.{{ number_format($orderDetail->shipping_cost) }}</div>
                                             </div>
                                             <hr class="mt-2 mb-2">
                                             <div class="invoice-detail-item">
-                                                <div class="invoice-detail-name">Total</div>
-                                                <div class="invoice-detail-value invoice-detail-value-lg">
-                                                    {{ rupiah($orderDetail->total_pay) }}</div>
+                                                <strong>Total :</strong>
+                                                <div class="invoice-detail-value invoice-detail-value-lg">Rp.{{ number_format($orderDetail->total_harga) }}</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                         <hr>
                         <div class="text-md-right">
                             <div class="float-lg-left mb-lg-0 mb-3">
