@@ -14,4 +14,9 @@ class Order extends Model
         'product_id',
         'jumlah_pesanan'
     ];
+
+    public function OrderDetail()
+    {
+        return $this->belongsTo(Order::class,'order_id','id');
+    }
 }

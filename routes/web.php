@@ -19,7 +19,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/transaction/{invoice}', [OrderController::class, 'show'])->name('transaction');
-    Route::post('/order', [OrderController::class, 'orderDetail'])->name('order');
+    Route::get('/order', [OrderController::class, 'index'])->name('order');
+    Route::post('/order', [OrderController::class, 'orderDetail'])->name('orderDetail');
     Route::get('/provinsi', [CheckoutController::class, 'get_province'])->name('provinsi');
     Route::get('/kota/{id}', [CheckoutController::class, 'get_city'])->name('city');
     Route::get('/origin={city_origin}&destination={city_destination}&weight={weight}&courier={courier}', [App\Http\Controllers\CheckoutController::class, 'get_ongkir'])->name('ongkir');

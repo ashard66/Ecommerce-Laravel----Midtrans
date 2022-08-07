@@ -19,6 +19,17 @@ class OrderController extends Controller
         $this->orderDetail = $orderDetail;
     }
 
+    public function index($status = null)
+    {
+        $dataOrder = OrderDetail::all();
+        if($status == null){
+            $data = $this->orderDetail->get();
+        }else{
+            $data = $this->orderDetail->Query()->where('status',$status)->get();
+        }
+        return view('transaction', compact('dataOrder', 'data'));
+    }
+
     public function orderDetail(Request $request)
     {
         $subtotal = $request['totalbelanja'];
@@ -52,7 +63,7 @@ class OrderController extends Controller
         $cartItem = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartItem);
 
-        return view('transaction', compact('dataOrder'));
+        return redirect()->route('order');
     }
 
     public function show($invoice)

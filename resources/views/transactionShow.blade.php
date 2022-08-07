@@ -141,7 +141,7 @@
                                     <button class="btn btn-primary btn-icon icon-left" id="pay-button"><i
                                             class="fa fa-credit-card"></i>
                                         Process Payment</button>
-                                    <a href="#" class="btn btn-danger btn-icon icon-left"><i class="fa fa-times"></i>
+                                    <a href="{{ route('order') }}" class="btn btn-danger btn-icon icon-left"><i class="fa fa-times"></i>
                                         Cancel Order</a>
                                         @else
                                         Pembayaran Berhasil
