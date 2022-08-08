@@ -134,15 +134,13 @@
                                     <button class="btn btn-primary btn-icon icon-left" id="pay-button"><i
                                             class="fa fa-credit-card"></i>
                                         Process Payment</button>
-                                    <a href="{{ route('order') }}" class="btn btn-danger btn-icon icon-left"><i class="fa fa-times"></i>
+                                    <a href="{{ route('transaction.canceled',$orderDetail->invoice) }}" class="btn btn-danger btn-icon icon-left"><i class="fa fa-times"></i>
                                         Cancel Order</a>
-                                        @else
-                                        Pembayaran Berhasil
-                                {{-- @elseif ($data['order']->status == 2)
-                                    <a href="{{ route('transaction.received', $data['order']->invoice_number) }}"
+                                @elseif ($orderDetail->status == 2)
+                                    <a href="{{ route('transaction.received', $orderDetail->invoice) }}"
                                         class="btn btn-primary text-white btn-icon icon-left"><i
                                             class="fa fa-credit-card"></i>
-                                        Order Received</a> --}}
+                                        Order Received</a>
                                 @endif
                             </div>
                             <button class="btn btn-warning btn-icon icon-left"><i class="fa fa-print"></i> Print</button>

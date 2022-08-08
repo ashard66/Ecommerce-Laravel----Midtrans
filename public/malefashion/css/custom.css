@@ -1,7 +1,7 @@
 .header_login {
     display: inline-block;
     text-align: center;
-	padding: 26px 0 25px;
+    padding: 26px 0 25px;
     position: relative;
     padding-left: 50px;
 }
@@ -10,7 +10,7 @@
     display: inline-block;
     text-align: center;
     position: relative;
-	font-family: "Nunito Sans", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-weight: bold;
 }
@@ -23,4 +23,53 @@
 
 .checkout-btn {
     padding: 100px;
+}
+
+.invoice {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    background-color: #fff;
+    border-radius: 3px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 40px;
+}
+
+.invoice .invoice-title .invoice-number {
+    float: right;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: -45px;
+}
+
+.invoice hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top-color: #f9f9f9;
+}
+
+.invoice .invoice-detail-item {
+    margin-bottom: 15px;
+}
+
+.invoice .invoice-detail-item .invoice-detail-name {
+    letter-spacing: .3px;
+    color: #98a6ad;
+    margin-bottom: 4px;
+}
+
+.invoice .invoice-detail-item .invoice-detail-value {
+    font-size: 18px;
+    color: #34395e;
+    font-weight: 700;
+}
+
+.invoice .invoice-detail-item .invoice-detail-value.invoice-detail-value-lg {
+    font-size: 24px;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .table-invoice table {
+        min-width: 800px;
+    }
 }

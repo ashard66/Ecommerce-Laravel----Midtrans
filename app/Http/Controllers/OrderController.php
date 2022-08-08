@@ -80,4 +80,16 @@ class OrderController extends Controller
  
         return view('transactionShow', compact('orderDetail', 'snapToken'));
     }
+
+    public function received($invoice)
+    {
+        $this->orderDetail->Query()->where('invoice',$invoice)->first()->update(['status' => 3]);
+        return back();
+    }
+
+    public function canceled($invoice)
+    {
+        $this->orderDetail->Query()->where('invoice',$invoice)->first()->update(['status' => 4]);
+        return back();
+    }
 }

@@ -24,7 +24,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/provinsi', [CheckoutController::class, 'get_province'])->name('provinsi');
     Route::get('/kota/{id}', [CheckoutController::class, 'get_city'])->name('city');
     Route::get('/origin={city_origin}&destination={city_destination}&weight={weight}&courier={courier}', [App\Http\Controllers\CheckoutController::class, 'get_ongkir'])->name('ongkir');
-
+    Route::get('/{invoice}/received',[OrderController::class,'received'])->name('transaction.received');
+    Route::get('/{invoice}/canceled',[OrderController::class,'canceled'])->name('transaction.canceled');
 });
 
 Route::post('/add-to-cart', [CartController::class, 'addCart'])->name('add.cart');
