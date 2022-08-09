@@ -9,7 +9,7 @@ class OrderDetail extends Model
 {
     use HasFactory;
     protected $table = 'order_details';
-    protected $appends = ['status_name','status_text','one_product','array_product'];
+    protected $appends = ['status_name','status_name_text','one_product','array_product'];
     protected $fillable = [
       'invoice',
       'status',
@@ -65,6 +65,29 @@ class OrderDetail extends Model
             '5' => '<div class="badge badge-secondary">Kadaluarsa</div>',
         ];
         return $status[$this->status];
+    }
+
+    public function getOneProductAttribute()
+    {
+        $product = $this->Order[0]->product->nama;
+        if($this->Order()->count() > 1){
+            $product .= ' & ' . $this->Order()->count() . 'produk lainnya';
+        }
+        return $product;
+    }
+
+    public function getArrayProductAttribute()
+    {
+        $product = [];
+        foreach($this->Order()->get() as $detail){
+            array_push($product,[
+                'id' => $detail->product->id,
+                'harga' => $detail->product->harga,
+                'jumlah_pesanan' => $detail->jumlah_pesanan,
+                'name' => $detail->product->nama,
+            ]);
+        }
+        return $product;
     }
 
 }

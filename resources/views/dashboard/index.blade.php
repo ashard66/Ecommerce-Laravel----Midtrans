@@ -148,7 +148,7 @@
                                                 </td>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">
-                                                    {!! $order->status_name !!}
+                                                    {!! $order->status_name_text !!}
                                                 </td>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">

@@ -12,11 +12,14 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     protected $salesChart;
+    protected $orderDetail;
 
-    public function __construct(SalesChart $salesChart)
+    public function __construct(SalesChart $salesChart, OrderDetail $orderDetail)
     {
         $this->salesChart = $salesChart;
+        $this->orderDetail = $orderDetail;
     }
+    
     public function index()
     {
         $data['total_product'] = Product::count();
@@ -30,10 +33,15 @@ class AdminController extends Controller
         return view('dashboard.index', compact('data'));
     }
 
-    public function transaction()
+    public function transaction($status = null)
     {
         $order = OrderDetail::all();
-        return view('dashboard.transaction', compact('order'));
+        if($status == null){
+            $data = $this->orderDetail->get();
+        }else{
+            $data = $this->orderDetail->Query()->where('status',$status)->get();
+        }
+        return view('dashboard.transaction', compact('order', 'data'));
     }
 
     public function detail()

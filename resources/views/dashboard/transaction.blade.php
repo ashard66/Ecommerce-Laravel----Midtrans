@@ -47,7 +47,7 @@
                                                 </td>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">
-                                                    {!! $item->status_name !!}
+                                                    {!! $item->status_name_text !!}
                                                 </td>
                                                 <td
                                                     class="align-middle text-center text-secondary font-weight-bold text-xs">
