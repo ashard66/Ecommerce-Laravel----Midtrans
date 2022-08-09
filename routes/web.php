@@ -36,6 +36,8 @@ Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/transaction', [AdminController::class, 'transaction'])->name('order.transaction');
+    Route::get('/dashboard/transaction/{invoice}', [AdminController::class, 'detail'])->name('detail.transaction');
 
     Route::get('/dashboard/product', [ProductController::class, 'product'])->name('product');
     Route::get('/dashboard/product/add', [ProductController::class, 'add'])->name('add.product');

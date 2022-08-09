@@ -29,4 +29,15 @@ class AdminController extends Controller
         $data['chart'] = $this->salesChart->build();
         return view('dashboard.index', compact('data'));
     }
+
+    public function transaction()
+    {
+        $order = OrderDetail::all();
+        return view('dashboard.transaction', compact('order'));
+    }
+
+    public function detail()
+    {
+        # code...
+    }
 }
