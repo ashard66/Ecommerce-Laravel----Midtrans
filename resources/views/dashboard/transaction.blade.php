@@ -54,7 +54,7 @@
                                                     {{ $item->created_at }}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <a href="{{ route('detail.transaction',$item->invoice) }}" class="btn btn-link text-dark px-3 mb-0"
+                                                    <a href="{{ route('detail.transaction',$item->id) }}" class="btn btn-link text-dark px-3 mb-0"
                                                         data-toggle="tooltip" data-original-title="Edit user"><i
                                                             class="fas fa-eye text-dark me-2" aria-hidden="true"></i>
                                                         Detail

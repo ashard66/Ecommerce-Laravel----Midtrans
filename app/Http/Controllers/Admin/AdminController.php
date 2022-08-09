@@ -44,8 +44,9 @@ class AdminController extends Controller
         return view('dashboard.transaction', compact('order', 'data'));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        # code...
+        $orderDetail = OrderDetail::find($id);
+        return view('dashboard.transactionShow', compact('orderDetail'));
     }
 }

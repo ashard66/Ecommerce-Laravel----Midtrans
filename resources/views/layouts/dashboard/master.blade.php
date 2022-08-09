@@ -17,11 +17,13 @@
     <link href="{{ asset('admin/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('admin/css/soft-ui-dashboard.css?v=1.0.6') }}" rel="stylesheet" />
+    <link href="{{ asset('malefashion/css/custom.css') }}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
     @include('layouts.dashboard.sidebar')
     @yield('content')
+    @stack('modal')
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"> </i>
@@ -125,7 +127,6 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('admin/js/soft-ui-dashboard.min.js?v=1.0.6') }}"></script>
     <script src="{{ LarapexChart::cdn() }}"></script>
-
     @stack('js')
 </body>
 
