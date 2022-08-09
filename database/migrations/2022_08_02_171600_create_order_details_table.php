@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('layanan');
             $table->string('snap_token')->nullable();
+            $table->string('resi')->nullable();
             $table->timestamps();
         });
     }

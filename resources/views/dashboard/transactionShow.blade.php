@@ -48,7 +48,7 @@
                                                 <address>
                                                     <strong>Status Pesanan :</strong>
                                                     <div class="mt-2">
-                                                        {!! $orderDetail->status_name !!}
+                                                        {!! $orderDetail->status_name_text !!}
                                                     </div>
                                                 </address>
                                             </div>
@@ -95,15 +95,15 @@
                                                             {{ $orderDetail->layanan }}</p>
                                                     </div>
                                                 </address>
-                                                {{-- @if ($orderDetail->receipt_number != null)
+                                                @if ($orderDetail->resi != null)
                                                     <address>
-                                                        <strong>{{ __('text.receipt_number') }}:</strong>
+                                                        <strong>Nomor Resi :</strong>
                                                         <div class="mt-2">
                                                             <p class="section-lead text-uppercase">
-                                                                {{ $orderDetail->receipt_number }}</p>
+                                                                {{ $orderDetail->resi }}</p>
                                                         </div>
                                                     </address>
-                                                @endif --}}
+                                                @endif
                                             </div>
                                             <div class="col-lg-4 text-right">
                                                 <div class="invoice-detail-item">
@@ -137,7 +137,7 @@
     <div class="modal fade" id="resiModal" tabindex="-1" role="dialog" aria-labelledby="resiModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="" method="POST">
+            <form action="{{ route('input.resi') }}" method="POST">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -149,12 +149,12 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="">Nomor Pesanan</label>
-                            <input type="text" class="form-control" name="invoice_number" id="invoice_number"
+                            <input type="text" class="form-control" name="invoice" id="invoice"
                                 readonly>
                         </div>
                         <div class="form-group">
                             <label for="">Nomor Resi</label>
-                            <input type="text" class="form-control" name="receipt_number" id="receipt_number"
+                            <input type="text" class="form-control" name="resi" id="resi"
                                 required>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
         $('#resiModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');
-            $('#invoice_number').val(id);
+            $('#invoice').val(id);
         });
     </script>
 @endpush

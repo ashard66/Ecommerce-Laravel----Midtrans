@@ -24,6 +24,7 @@ class OrderDetail extends Model
       'destination',
       'alamat',
       'layanan',
+      'resi'
     ];
 
     public function User()

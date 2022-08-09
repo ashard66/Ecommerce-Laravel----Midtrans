@@ -49,4 +49,11 @@ class AdminController extends Controller
         $orderDetail = OrderDetail::find($id);
         return view('dashboard.transactionShow', compact('orderDetail'));
     }
+
+    public function inputResi(Request $request)
+    {
+        $request->merge(['status' => 2]);
+        $this->orderDetail->Query()->where('invoice',$request->invoice)->first()->update($request->only('status','resi'));
+        return back();
+    }
 }
