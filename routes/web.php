@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -32,6 +33,8 @@ Route::post('/add-to-cart', [CartController::class, 'addCart'])->name('add.cart'
 Route::post('/delete-cart', [CartController::class, 'deleteCart'])->name('delete.cart');
 Route::post('/update-cart', [CartController::class, 'updateCart'])->name('update.cart');
 
+Route::post('payments/midtrans-notification', [MidtransController::class, 'receive']);
+Route::post('payments/midtrans-success', [MidtransController::class, 'success']);
 
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
