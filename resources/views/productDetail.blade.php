@@ -43,6 +43,11 @@
                         </div>
                         <h3>Rp. {{ number_format($product->harga) }} </h3>
                         <p>{{ $product->keterangan }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas error libero, optio natus aut dolores id harum nobis perferendis neque asperiores temporibus nam iusto sunt aperiam in ullam accusamus iure. </p>
+                        @if ($product->stok > 0)
+                            <label class="badge bg-success">Stok : <span>{{ $product->stok }}</span></label>
+                        @else
+                            <label class="badge bg-danger">Out of Stok</label>
+                        @endif
                         <div class="product__details__cart__option">
                             <input type="hidden" value="{{ $product->id }}" class="product_id">
                             <div class="quantity">
@@ -50,7 +55,7 @@
                                     <input class="jumlah_product" type="text" value="1">
                                 </div>
                             </div>
-                            <button type="button" class="primary-btn addCartBtn"><i class="fa fa-cart-plus"></i> add to cart</button>
+                            <button type="button" class="primary-btn addCartBtn" @if ($product->stok == 0) disabled @endif><i class="fa fa-cart-plus"></i> add to cart</button>
                         </div>
                     </div>
                 </div>

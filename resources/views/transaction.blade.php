@@ -8,7 +8,7 @@
                     <div class="breadcrumb__links">
                         <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
                         <a href="{{ url('checkout') }}"><i class="fa fa-home"></i> Checkout</a>
-                        <span>Transaction</span>
+                        <span>Order</span>
                     </div>
                 </div>
             </div>
@@ -24,15 +24,15 @@
                             <tbody>
                                 <tr>
                                     <th>Invoice ID</th>
-                                    {{-- <th>Products</th> --}}
+                                    <th>Products</th>
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
-                                @foreach ($dataOrder as $order)
+                                @foreach ($data['order'] as $order)
                                 <tr>
                                     <td><a href="{{ route('transaction',$order->invoice) }}">{{ $order->invoice }}</a></td>
-                                    {{-- <td class="font-weight-600">{{ $order->one_product }}</td> --}}
+                                    <td class="font-weight-600">{{ $order->one_product }}</td>
                                     <td>{!! $order->status_name !!}</td>
                                     <td>{{ $order->created_at }}</td>
                                     <td>
