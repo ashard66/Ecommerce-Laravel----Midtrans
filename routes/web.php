@@ -8,6 +8,7 @@ use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 
 Auth::routes();
 
@@ -39,6 +40,9 @@ Route::post('payments/midtrans-success', [MidtransController::class, 'success'])
 Route::group(['middleware' => ['role:super-admin|admin']], function(){
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+    Route::get('/dashboard/user', [UserController::class, 'index'])->name('data.user');
+
     Route::get('/dashboard/transaction', [AdminController::class, 'transaction'])->name('order.transaction');
     Route::get('/dashboard/transaction/{id}', [AdminController::class, 'detail'])->name('detail.transaction');
     Route::post('/dashboard/transaction/inputresi', [AdminController::class, 'inputResi'])->name('input.resi');
