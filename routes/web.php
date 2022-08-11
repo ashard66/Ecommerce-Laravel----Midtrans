@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -42,6 +43,8 @@ Route::group(['middleware' => ['role:super-admin|admin']], function(){
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
     Route::get('/dashboard/user', [UserController::class, 'index'])->name('data.user');
+
+    Route::get('/dashboard/address', [AddressController::class, 'index'])->name('address');
 
     Route::get('/dashboard/transaction', [AdminController::class, 'transaction'])->name('order.transaction');
     Route::get('/dashboard/transaction/{id}', [AdminController::class, 'detail'])->name('detail.transaction');
