@@ -1,4 +1,7 @@
 @extends('layouts.dashboard.master')
+@section('title')
+    Dashboard Kategori
+@endsection
 @section('content')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         @include('layouts.dashboard.navbar')
@@ -17,7 +20,7 @@
                                         @csrf
                                         <label>Nama</label>
                                         <div class="mb-3">
-                                            <input name="nama" id="nama" label="nama" type="text" class="form-control" placeholder="Nama" aria-label="text">
+                                            <input name="nama" id="nama" label="nama" type="text" class="form-control" placeholder="Nama" aria-label="text" required>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Tambah</button>

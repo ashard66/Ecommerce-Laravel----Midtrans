@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Shop
+@endsection
 @section('content')
 
 <!-- Breadcrumb Section Begin -->
@@ -58,8 +61,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__sidebar__search">
-                                <form action="#">
-                                    <input type="text" placeholder="Search...">
+                                <form action="{{ route('search') }}">
+                                    <input type="text" name="cari" placeholder="Search...">
                                     <button type="submit"><span class="icon_search"></span></button>
                                 </form>
                             </div>
@@ -86,12 +89,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
+                        <div class="text-center">
+                            {{ $product->links() }}
                         </div>
                     </div>
                 </div>

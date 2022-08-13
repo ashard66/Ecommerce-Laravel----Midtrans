@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Order Detail
+@endsection
 @section('content')
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
@@ -143,7 +146,6 @@
                                         Pesanan Selesai</a>
                                 @endif
                             </div>
-                            <button class="btn btn-warning btn-icon icon-left"><i class="fa fa-print"></i> Print</button>
                         </div>
                     </div>
                 </div>

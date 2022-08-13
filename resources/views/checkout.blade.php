@@ -3,6 +3,9 @@
 integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
 @extends('layouts.master')
+@section('title')
+    Checkout
+@endsection
 @section('content')
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
@@ -32,21 +35,19 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Billing Details</h6>
-                                    <input type="hidden" value="6" class="form-control" name="province_origin">
-                                    <input type="hidden" value="40" class="form-control" id="city_origin" name="city_origin">
                                 <div class="checkout__input">
                                     <p>Name<span>*</span></p>
-                                    <input type="text" value="{{ Auth()->user()->name }}" name="nama">
+                                    <input type="text" value="{{ Auth()->user()->name }}" name="nama" required>
                                 </div>
                                 <div class="checkout__input">
                                     <p>Phone<span>*</span></p>
-                                    <input type="text" name="phone">
+                                    <input type="text" name="phone" required>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-6">
                                         <label for="provinsi">Provinsi</label>
                                         <div class="input-group">
-                                            <select name="provinsi_id" id="provinsi_id" class="form-control scroll-select">
+                                            <select name="provinsi_id" id="provinsi_id" class="form-control scroll-select" required>
                                                 <option value="0">Pilih Provinsi</option>
                                                 @foreach ($provinsi as $item)
                                                     <option value="{{ $item['province'] }}" data-id="{{ $item['province_id'] }}">{{ $item['province'] }}</option>
@@ -59,7 +60,7 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
                                     <div class="col-6">
                                         <label for="kabupaten">Kabupaten</label>
                                         <div class="input-group">
-                                            <select name="kota_id" id="kota_id" class="form-control scroll-select">
+                                            <select name="kota_id" id="kota_id" class="form-control scroll-select" required>
                                                 <option value="0">Pilih Kabupaten</option>
                                             </select>
                                         </div>
@@ -69,11 +70,11 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
                                 </div>
                                 <label for="alamat">Alamat</label>
                                 <div class="checkout__input">
-                                    <input type="text" name="alamat" class="checkout__input__add">
+                                    <input type="text" name="alamat" class="checkout__input__add" required>
                                 </div>
                                 <label>Pilih Ekspedisi</label>
                                 <div class="input-group mb-3">
-                                    <select name="kurir" id="kurir" class="form-control">
+                                    <select name="kurir" id="kurir" class="form-control" required>
                                         <option value="">Pilih kurir</option>
                                         <option value="jne">JNE</option>
                                         <option value="tiki">TIKI</option>
@@ -82,7 +83,7 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
                                 </div>
                                 <label>Pilih Layanan</label>
                                 <div class="input-group">
-                                    <select name="layanan" id="layanan" class="form-control scroll-select">
+                                    <select name="layanan" id="layanan" class="form-control scroll-select" required>
                                         <option value="">Pilih layanan</option>
                                     </select>
                                 </div>

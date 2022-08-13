@@ -5,31 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    
+    protected $product;
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        $data['latest_product'] = $this->product->query()->limit(8)->get();
+        return view('home', compact('data'));
     }
 
     public function shop()
     {
         $category = Category::all();
-        $product = Product::all();
+        $product = Product::paginate(9);
         return view('shop', compact('product', 'category'));
+    }
+
+    public function search(Request $request)
+    {
+        $cari = $request->cari;
+        $data['product'] = $this->product->where('nama', 'LIKE', "%" .$cari. "%")->paginate();
+        return view('search', compact('data'));
     }
 
     public function viewcategory($id)

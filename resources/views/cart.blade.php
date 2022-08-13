@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Keranjang
+@endsection
 @section('content')
     <section class="breadcrumb-option">
         <div class="container">

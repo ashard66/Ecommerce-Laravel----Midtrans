@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Order
+@endsection
 @section('content')
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
