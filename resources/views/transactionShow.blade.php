@@ -97,15 +97,15 @@
                                                         {{ $orderDetail->layanan }}</p>
                                                 </div>
                                             </address>
-                                            {{-- @if ($orderDetail->receipt_number != null)
+                                            @if ($orderDetail->resi != null)
                                                 <address>
-                                                    <strong>{{ __('text.receipt_number') }}:</strong>
+                                                    <strong>Nomor Resi : </strong>
                                                     <div class="mt-2">
                                                         <p class="section-lead text-uppercase">
-                                                            {{ $orderDetail->receipt_number }}</p>
+                                                            {{ $orderDetail->resi }}</p>
                                                     </div>
                                                 </address>
-                                            @endif --}}
+                                            @endif
                                         </div>
                                         <div class="col-lg-4 text-right">
                                             <div class="invoice-detail-item">
@@ -133,14 +133,14 @@
                                 @if ($orderDetail->status == 0)
                                     <button class="btn btn-primary btn-icon icon-left" id="pay-button"><i
                                             class="fa fa-credit-card"></i>
-                                        Process Payment</button>
+                                        Metode Pembayaran</button>
                                     <a href="{{ route('transaction.canceled',$orderDetail->invoice) }}" class="btn btn-danger btn-icon icon-left"><i class="fa fa-times"></i>
-                                        Cancel Order</a>
+                                        Cancel</a>
                                 @elseif ($orderDetail->status == 2)
                                     <a href="{{ route('transaction.received', $orderDetail->invoice) }}"
                                         class="btn btn-primary text-white btn-icon icon-left"><i
                                             class="fa fa-credit-card"></i>
-                                        Order Received</a>
+                                        Pesanan Selesai</a>
                                 @endif
                             </div>
                             <button class="btn btn-warning btn-icon icon-left"><i class="fa fa-print"></i> Print</button>

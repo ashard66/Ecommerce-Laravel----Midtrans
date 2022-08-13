@@ -190,7 +190,7 @@ integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgB
             });
 
             function cekCost() {
-                let origin = $("input[name=city_origin]").val();
+                let origin = '{{ $address->kota_id }}'; 
                 let destination = $('#kota_id option:selected').data('id');
                 let courier = $("select[name=kurir]").val();
                 let weight = $("input[name=berat]").val();

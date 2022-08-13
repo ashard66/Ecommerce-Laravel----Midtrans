@@ -134,27 +134,17 @@
                         <span class="nav-link-text ms-1">Transaksi</span>
                     </a>
                 </li>
+                {{-- <li class="nav-item">
+                    <a class="nav-link {{ Request::is('dashboard/address') ? 'active':'' }} " href="{{ route('address') }}">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                                <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                            </svg>
+                        </div>
+                        <span class="nav-link-text ms-1">Alamat Pengiriman</span>
+                    </a>
+                </li> --}}
             </ul>
-        </div>
-        <div class="sidenav-footer mx-3 ">
-            <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-                <div class="full-background"
-                    style="background-image: {{ url('admin/img/curved-images/white-curved.jpg') }}"></div>
-                <div class="card-body text-start p-3 w-100">
-                    <div
-                        class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-                        <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
-                            id="sidenavCardIcon"></i>
-                    </div>
-                    <div class="docs-info">
-                        <h6 class="text-white up mb-0">Need help?</h6>
-                        <p class="text-xs font-weight-bold">Please check our docs</p>
-                        <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard"
-                            target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-                    </div>
-                </div>
-            </div>
-            <a class="btn bg-gradient-primary mt-3 w-100"
-                href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree">Upgrade to pro</a>
         </div>
     </aside>

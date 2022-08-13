@@ -113,7 +113,7 @@
                         <div class="card-header pb-0">
                             <div class="row">
                                 <div class="col-lg-6 col-7">
-                                    <h6>New Order</h6>
+                                    <h6>Latest Order</h6>
                                 </div>
                             </div>
                         </div>

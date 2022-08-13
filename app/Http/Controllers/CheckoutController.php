@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Kavist\RajaOngkir\Facades\RajaOngkir;
 
 class CheckoutController extends Controller
 {
@@ -13,7 +13,8 @@ class CheckoutController extends Controller
     {
         $cart = Cart::where('user_id', Auth::id())->get();
         $provinsi = $this->get_province();
-        return view('checkout', ['provinsi' => $provinsi], compact('cart'));
+        $address = Address::first();
+        return view('checkout', ['provinsi' => $provinsi], compact('cart', 'address'));
     }
 
     public function get_province()
